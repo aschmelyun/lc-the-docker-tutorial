@@ -27,14 +27,21 @@ services:
     build:
       context: .
       dockerfile: php.dockerfile
+      args:
+        - UID=${UID:-1000}
+        - GID=${GID:-1000}
     volumes:
       - ./src:/var/www/html
   composer:
     build:
       context: .
       dockerfile: composer.dockerfile
+      args:
+        - UID=${UID:-1000}
+        - GID=${GID:-1000}
     volumes:
       - ./src:/var/www/html
+    user: laravel
     working_dir: /var/www/html
   npm:
     image: node:current-alpine
@@ -46,6 +53,9 @@ services:
     build:
       context: .
       dockerfile: php.dockerfile
+      args:
+        - UID=${UID:-1000}
+        - GID=${GID:-1000}
     volumes:
       - ./src:/var/www/html
     working_dir: /var/www/html

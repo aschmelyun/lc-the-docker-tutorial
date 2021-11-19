@@ -16,6 +16,9 @@ services:
     build:
       context: .
       dockerfile: php.prod.dockerfile
+      args:
+        - UID=${UID:-1000}
+        - GID=${GID:-1000}
   assets:
     image: node:current-alpine
     volumes:

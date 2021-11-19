@@ -25,8 +25,8 @@ Three additional containers are included that handle Composer, NPM, and Artisan 
 If you encounter any issues with filesystem permissions while visiting your application or running a container command, try completing the following steps:
 
 - Bring any container(s) down with `docker-compose down`
-- Open up the php, nginx, or composer Dockerfiles
-- Modify the values in the `ENV` attributes to match the user and group of this folder in your system
+- In your terminal, run the following commands: `export UID=$(id -u)` and `export GID=$(id -g)` 
+- If you see any errors about readonly variables from the above step, you can ignore them and continue
 - Re-build the containers by running `docker-compose build --no-cache`
 
 Then, either bring back up your container network or re-run the command you were trying before, and see if that fixes it.
